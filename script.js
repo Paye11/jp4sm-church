@@ -3,11 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector(".mobile-menu-btn");
   const navMenu = document.querySelector("nav ul");
   const navLinks = document.querySelectorAll("nav ul li a");
+  const submenuButtons = document.querySelectorAll(".submenu-btn");
+
+  const closeSubmenus = () => {
+    document.querySelectorAll(".has-submenu.submenu-open").forEach((el) => {
+      el.classList.remove("submenu-open");
+      const btn = el.querySelector(".submenu-btn");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+    });
+  };
 
   // Function to close mobile menu and reset icon
   const closeMobileMenu = () => {
     if (navMenu && navMenu.classList.contains("active")) {
       navMenu.classList.remove("active");
+      closeSubmenus();
       const icon = menuBtn.querySelector("i");
       if (icon.classList.contains("fa-times")) {
         icon.classList.remove("fa-times");
@@ -20,11 +30,25 @@ document.addEventListener("DOMContentLoaded", () => {
   if (menuBtn && navMenu) {
     menuBtn.addEventListener("click", () => {
       navMenu.classList.toggle("active");
+      if (!navMenu.classList.contains("active")) {
+        closeSubmenus();
+      }
       const icon = menuBtn.querySelector("i");
       icon.classList.toggle("fa-bars");
       icon.classList.toggle("fa-times");
     });
   }
+
+  submenuButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const parent = btn.closest(".has-submenu");
+      if (!parent) return;
+      const isOpen = parent.classList.toggle("submenu-open");
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
 
   // Close mobile menu when any nav link is clicked
   navLinks.forEach(link => {
@@ -126,7 +150,7 @@ if (form) {
     formStatus.textContent = "Sending...";
     formStatus.style.color = "#555";
 
-    emailjs.sendForm("service_ezw1qrh", "template_mlq2s5o", this)
+    emailjs.sendForm("service_gl39cc6", "template_euocxae", this)
       .then(() => {
         formStatus.textContent = "✅ Thank you! Your message has been sent successfully.";
         formStatus.style.color = "green";
@@ -147,7 +171,11 @@ if (form) {
   document.addEventListener('click', (e) => {
     const isClickInsideMenu = navMenu?.contains(e.target);
     const isClickOnMenuButton = menuBtn?.contains(e.target);
-    
+
+    if (!isClickInsideMenu && !isClickOnMenuButton) {
+      closeSubmenus();
+    }
+
     if (!isClickInsideMenu && !isClickOnMenuButton && navMenu?.classList.contains('active')) {
       closeMobileMenu();
     }
@@ -175,8 +203,11 @@ var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
 
   // ===== CLOSE MENU ON ESCAPE KEY =====
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && navMenu?.classList.contains('active')) {
-      closeMobileMenu();
+    if (e.key === 'Escape') {
+      closeSubmenus();
+      if (navMenu?.classList.contains('active')) {
+        closeMobileMenu();
+      }
     }
   });
 });

@@ -10,13 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script><script>
-  (function() {
-  emailjs.init({
-    publicKey: "mS2oDfOm5fvbktnAx", 
-  });
-})();
-</script>
 <script src="script.js"></script>
 
 </head>
@@ -24,19 +17,31 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#hero" class="logo">
+            <a href="index.html" class="logo">
                 <img src="/images/logo.jpg" alt="JP4SM Logo" class="logo-img">
             </a>
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" type="button" aria-label="Open menu">
                 <i class="fas fa-bars"></i>
             </button>
             <nav>
                 <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#activities">Our Activities</a></li>
-                    <li><a href="#team">Our Team</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact" class="btn">Contact Us</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li class="has-submenu">
+                        <a href="activities.html">Our Activities</a>
+                        <button class="submenu-btn" type="button" aria-label="Toggle activities submenu" aria-expanded="false">
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <ul class="submenu">
+                            <li><a href="crusade.html">Crusade</a></li>
+                            <li><a href="missions.html">Missions</a></li>
+                            <li><a href="church-planting.html">Church Planting</a></li>
+                            <li><a href="children-ministry.html">Children Ministry</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html" class="btn">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
@@ -49,108 +54,73 @@
             <h2>JP4SM</h2>
             <p>Reaching everyone everywhere with the gospel of Jesus Christ, planting churches, and transforming lives through the power of the gospel.</p>
             <div class="hero-buttons">
-                <a href="#contact" class="btn">Join the Mission</a>
-                <a href="#contact" class="btn btn-outline">Support Our Work</a>
+                <a href="contact.html" class="btn">Join the Mission</a>
+                <a href="contact.html" class="btn btn-outline">Support Our Work</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about elegant">
+    <section class="founding-story">
         <div class="container">
-            <h2 class="section-title">About Us</h2>
-            <div class="about-grid">
-                <div class="about-intro">
-                    <h3>What We Stand For</h3>
-                    <p>At <strong>Jesus' Passion for Souls Movement (JP4SM)</strong>, we are dedicated to fulfilling the Great Commission by spreading the Gospel of Jesus Christ through Spirit-led evangelism, intentional discipleship, and compassionate outreach to communities worldwide.</p>
+            <h2 class="section-title">Founding Story</h2>
+            <div class="story-content">
+                <div class="story-text">
+                    <p>I grew up in Nyor Butuo, a small town in Nimba County, Liberia, speaking only Gio (Dan). I wasn't a Christian or aspiring preacher, nor guided by anyone into ministry, my calling came directly through a divine vision from God.</p>
+                    <p>On Wednesday, August 1, 2001, my life changed forever. That day I was completely normal-healthy, strong, and speaking my native language fluently as I always did. I had stayed out late playing with friends and went to sleep at my friend Enoch's house late at night. But in the quiet of my sleep, something extraordinary happened, I had a vision.</p>
+                    <p>In my vision, I found myself standing in the midst of a great multitude of people, all surrounding me, giving me their full attention. Suddenly, a loud voice from the clouds, like thunder and lightning combined, declared: "This world is coming to an end! This world will be destroyed by the power of God!"</p>
+                    <p>At that moment, fear gripped the crowd, and they scattered into the bushes, looking for a place to hide. Then, I felt the hand of an unknown person on my head, turning my face forcefully to the right toward the sky. When I looked up, the clouds parted and came down close to my face. Through the opening, I saw a beautiful city made entirely of gold.</p>
+                    <p>From that night until 6:00 a.m., I preached all over my hometown. Then I travelled to two neighbouring towns Nyor Display and Nyor Blomtuo preaching until late evening before returning home.</p>
+                    <p>On August 3, I left my home with only one shirt, one trouser, and an umbrella. From that day on, I travelled from town to town, city to city, preaching the gospel, planting churches, visiting villages and farms, and winning souls for Jesus.</p>
+                    <p>And to this day, I continue to preach the gospel of Jesus Christ, His death and resurrection.</p>
                 </div>
-                <div class="about-details">
-                    <div class="mission">
-                        <h4>Mission Statement</h4>
-                        <p>To fulfil the Great Commission through Spirit-led evangelism, strategic church planting, intentional discipleship, and meeting human needs to reach the world for Christ.</p>
-                    </div>
-                    <div class="vision">
-                        <h4>Vision Statement</h4>
-                        <p>To reach everyone, everywhere with the Gospel of Jesus Christ—transforming lives, planting churches, and shaping society through the power of the Gospel.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="core-values">
-                <h3>Core Values</h3>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <i class="fas fa-cross"></i>
-                        <h4>Faith</h4>
-                        <p>Living and acting through unwavering faith in Jesus Christ.</p>
-                    </div>
-                    <div class="value-item">
-                        <i class="fas fa-hands-helping"></i>
-                        <h4>Service</h4>
-                        <p>Serving communities with compassion and humility.</p>
-                    </div>
-                    <div class="value-item">
-                        <i class="fas fa-church"></i>
-                        <h4>Discipleship</h4>
-                        <p>Empowering believers to grow and disciple others in faith.</p>
-                    </div>
-                    <div class="value-item">
-                        <i class="fas fa-globe"></i>
-                        <h4>Evangelism</h4>
-                        <p>Reaching every nation through Spirit-led evangelism.</p>
-                    </div>
+                <div class="story-image">
+                    <div class="founder-image-responsive"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Founding Story Section -->
-<section class="founding-story">
-    <div class="container">
-        <h2 class="section-title">Founding Story</h2>
-        <div class="story-content">
-            <div class="story-text">
-                <p>I grew up in Nyor Butuo, a small town in Nimba County, Liberia, speaking only Gio (Dan). I wasn't a Christian or aspiring preacher, nor guided by anyone into ministry, my calling came directly through a divine vision from God.</p>
-                <p>On Wednesday, August 1, 2001, my life changed forever. That day I was completely normal-healthy, strong, and speaking my native language fluently as I always did. I had stayed out late playing with friends and went to sleep at my friend Enoch's house late at night. But in the quiet of my sleep, something extraordinary happened, I had a vision.</p>
-                <p>In my vision, I found myself standing in the midst of a great multitude of people, all surrounding me, giving me their full attention. Suddenly, a loud voice from the clouds, like thunder and lightning combined, declared: "This world is coming to an end! This world will be destroyed by the power of God!"</p>
-                <p>At that moment, fear gripped the crowd, and they scattered into the bushes, looking for a place to hide. Then, I felt the hand of an unknown person on my head, turning my face forcefully to the right toward the sky. When I looked up, the clouds parted and came down close to my face. Through the opening, I saw a beautiful city made entirely of gold.</p>
-                <p>From that night until 6:00 a.m., I preached all over my hometown. Then I travelled to two neighbouring towns Nyor Display and Nyor Blomtuo preaching until late evening before returning home.</p>
-                <p>On August 3, I left my home with only one shirt, one trouser, and an umbrella. From that day on, I travelled from town to town, city to city, preaching the gospel, planting churches, visiting villages and farms, and winning souls for Jesus.</p>
-                <p>And to this day, I continue to preach the gospel of Jesus Christ, His death and resurrection.</p>
-            </div>
-            <div class="story-image">
-                <div class="founder-image-responsive"></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Statistics Section -->
-    <section class="statistics minimal-style">
-        <div class="container">
-            <h2 class="section-title">Our Impact</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3 class="stat-number">100+</h3>
-                    <p class="stat-text">Churches Planted</p>
-                </div>
-                <div class="stat-item">
-                    <h3 class="stat-number">50,000+</h3>
-                    <p class="stat-text">Souls Reached</p>
-                </div>
-                <div class="stat-item">
-                    <h3 class="stat-number">1,000+</h3>
-                    <p class="stat-text">Pastors & Leaders Trained</p>
-                </div>
-                <div class="stat-item">
-                    <h3 class="stat-number">20+</h3>
-                    <p class="stat-text">Partner Ministries</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Section -->
     <section class="cta">
+        <div class="container">
+            <h2 class="section-title">Explore JP4SM</h2>
+            <div class="cta-grid">
+                <div class="cta-card">
+                    <div class="cta-icon">
+                        <i class="fas fa-circle-info"></i>
+                    </div>
+                    <h3>About Us</h3>
+                    <p>Learn our mission, vision, values, and founding story.</p>
+                    <a href="about.html" class="btn">Read More</a>
+                </div>
+                <div class="cta-card">
+                    <div class="cta-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Our Activities</h3>
+                    <p>Discover our work in crusades, missions, church planting, and children ministry.</p>
+                    <a href="activities.html" class="btn">View Activities</a>
+                </div>
+                <div class="cta-card">
+                    <div class="cta-icon">
+                        <i class="fas fa-people-group"></i>
+                    </div>
+                    <h3>Our Team</h3>
+                    <p>Meet the leadership team serving the movement.</p>
+                    <a href="team.html" class="btn">Meet the Team</a>
+                </div>
+                <div class="cta-card">
+                    <div class="cta-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3>Gallery</h3>
+                    <p>See photos from outreach, missions, and ministry moments.</p>
+                    <a href="gallery.html" class="btn">View Gallery</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" style="padding-top: 0;">
         <div class="container">
             <h2 class="section-title">Get Involved</h2>
             <div class="cta-grid">
@@ -159,212 +129,25 @@
                         <i class="fas fa-hands-helping"></i>
                     </div>
                     <h3>Volunteer</h3>
-                    <p>Join our mission team and help spread the gospel in communities across Liberia.</p>
-                    <a href="#contact" class="btn">Volunteer Now</a>
+                    <p>Join our mission team and help spread the gospel in communities.</p>
+                    <a href="contact.html" class="btn">Volunteer Now</a>
                 </div>
                 <div class="cta-card">
                     <div class="cta-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
                     <h3>Partner With Us</h3>
-                    <p>Collaborate with us to expand our reach and impact more lives for Christ.</p>
-                    <a href="#contact" class="btn">Partner Today</a>
+                    <p>Collaborate with us to expand our reach and impact more lives.</p>
+                    <a href="contact.html" class="btn">Partner Today</a>
                 </div>
                 <div class="cta-card">
                     <div class="cta-icon">
                         <i class="fas fa-donate"></i>
                     </div>
                     <h3>Donate / Support</h3>
-                    <p>Support our ministry financially to help us continue our evangelistic work.</p>
-                    <a href="#contact" class="btn">Donate Now</a>
+                    <p>Support our ministry financially to sustain evangelistic work.</p>
+                    <a href="contact.html" class="btn">Donate Now</a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="team">
-        <div class="container">
-            <h2 class="section-title">Our Leadership Team</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="/images/founder1.jpg" alt="Rev. Sylvester Gleekia">
-                    </div>
-                    <div class="member-name">Rev. Sylvester Gleekia</div>
-                    <div class="member-position">Executive Director - Founder</div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="/images/kamara.jpg" alt="Pastor Patick Kamara">
-                    </div>
-                    <div class="member-name">Pastor Patick Kamara</div>
-                    <div class="member-position">Director of Evangelism & Missions</div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="/images/karnue.jpg" alt="Mr. Sonkarlay Karnue">
-                    </div>
-                    <div class="member-name">Mr. Sonkarlay Karnue</div>
-                    <div class="member-position">Finance & Administration Officer</div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="/images/glekea.jpg" alt="Pastor Faith T. Gleekia">
-                    </div>
-                    <div class="member-name">Pastor Faith T. Gleekia</div>
-                    <div class="member-position">Strategic Planning & Development Officer</div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="/images/chea.jpg" alt="Mr. Ellison Chea">
-                    </div>
-                    <div class="member-name">Mr. Ellison Chea</div>
-                    <div class="member-position">Technical Services Officer</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Activities Section -->
-    <section id="activities" class="activities">
-        <div class="container" id="guinea">
-            <h2 class="main-title">Our Activities</h2>
-            <div class="activity" >
-                <h3>Mission in Guinea, Neighbouring Country</h3>
-                <div class="gallery-grid">
-                    <img src="/images/guinea1.jpg" alt="Mission in Guinea 1">
-                    <img src="/images/guinea2.jpg" alt="Mission in Guinea 2">
-                    <img src="/images/guinea3.jpg" alt="Mission in Guinea 3">
-                </div>
-            </div>
-            <div class="activity" id="crusades">
-                <h3>Jesus Passion for Soul Movement Crusade - Jamama Town, Brewerville</h3>
-                <div class="gallery-grid">
-                    <img src="/images/jamama1.jpg" alt="Jamama Crusade 1">
-                    <img src="/images/jamama2.jpg" alt="Jamama Crusade 2">
-                    <img src="/images/jamama3.jpg" alt="Jamama Crusade 3">
-                    <img src="/images/jamama4.jpg" alt="Jamama Crusade 4">
-                    <img src="/images/jamama5.jpg" alt="Jamama Crusade 5">
-                </div>
-            </div>
-            <div class="activity">
-                <h3>JP4S Mission for Crusade in Yekepa, Nimba County</h3>
-                <div class="gallery-grid">
-                    <img src="/images/yekepa1.jpg" alt="Yekepa Mission 1">
-                    <img src="/images/yekepa2.jpg" alt="Yekepa Mission 2">
-                    <img src="/images/yekepa3.jpg" alt="Yekepa Mission 3">
-                    <img src="/images/yekepa4.jpg" alt="Yekepa Mission 4">
-                    <img src="/images/yekepa5.jpg" alt="Yekepa Mission 5">
-                    <img src="/images/yekepa6.jpg" alt="Yekepa Mission 6">
-                </div>
-            </div>
-            <div class="activity" id="baptism">
-                <h3>Baptism during Yekepa Crusade</h3>
-                <div class="gallery-grid">
-                    <img src="/images/baptism1.jpg" alt="Baptism 1">
-                    <img src="/images/baptism2.jpg" alt="Baptism 2">
-                    <img src="/images/baptism3.jpg" alt="Baptism 3">
-                    <img src="/images/baptism4.jpg" alt="Baptism 4">
-                </div>
-            </div>
-            <div class="activity" id="supporters">
-                <h3>Our Supporters – Mission Support by Community Bible Church, USA</h3>
-                <div class="gallery-grid">
-                    <img src="/images/support1.jpg" alt="Supporter 1">
-                    <img src="/images/support2.jpg" alt="Supporter 2">
-                    <img src="/images/support3.jpg" alt="Supporter 3">
-                    <img src="/images/support4.jpg" alt="Supporter 4">
-                </div>
-            </div>
-            <div class="activity" id="churchbuilding">
-                <h3>Christ Brazen Assembly (CBA) Church Building Project – Montserrado County</h3>
-                <div class="gallery-grid">
-                    <img src="/images/cba1.jpg" alt="CBA Project 1">
-                    <img src="/images/cba2.jpg" alt="CBA Project 2">
-                    <img src="/images/cba3.jpg" alt="CBA Project 3">
-                    <img src="/images/cba4.jpg" alt="CBA Project 4">
-                </div>
-            </div>
-            <div class="activity">
-                <h3>Pastoral Conference in Ghana</h3>
-                <div class="gallery-grid">
-                    <img src="/images/ghana1.jpg" alt="Conference in Ghana 1">
-                    <img src="/images/ghana2.jpg" alt="Conference in Ghana 2">
-                    <img src="/images/ghana3.jpg" alt="Conference in Ghana 3">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Full Width Image Section -->
-    <section class="full-width-image">
-        <div class="image-container">
-            <img src="/images/landscape-image.jpg" alt="JP4SM Ministry Work" class="responsive-landscape">
-        </div>
-    </section>
-    <!-- Gallery Section -->
-    <section class="frame-gallery" id="gallery">
-        <div class="container">
-            <h2 class="section-title">Captured Faith & Service</h2>
-            <div class="frame-grid">
-                <img src="/images/gallery1.jpg" alt="">
-                <img src="/images/gallery2.jpg" alt="">
-                <img src="/images/gallery3.jpg" alt="">
-                <img src="/images/gallery4.jpg" alt="">
-                <img src="/images/gallery5.jpg" alt="">
-                <img src="/images/gallery6.jpg" alt="">
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <p>UPC Community, Kabbah Barnesville</p>
-                                <p>Montserrado County, Republic of Liberia</p>
-                                <p>West Africa</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <p>WhatsApp: (+2321) 778160653</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="map">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3965.7657934788585!2d-10.797259525546526!3d6.294479793694558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sUPC%20Community%2C%20Kabbah%20Barnesville%20%20Montserrado%20County%2C%20Republic%20of%20Liberia%20%20West%20Africa!5e0!3m2!1sen!2s!4v1759858801877!5m2!1sen!2s" 
-        width="100%"          height="100%"         style="border:0;"     allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
-                </div>
-                <div class="contact-form">
-  <h3>Send Us a Message</h3>
-  <form id="contact-form">
-    <input type="text" name="user_name" placeholder="Your Name" required>
-    <input type="email" name="user_email" placeholder="Your Email" required>
-    <input type="text" name="subject" placeholder="Subject">
-    <textarea name="message" placeholder="Your Message" required></textarea>
-    <button type="submit" class="btn">Send Message</button>
-  </form>
-  <p id="form-status" class="form-status"></p>
-</div>
-
             </div>
         </div>
     </section>
@@ -385,21 +168,20 @@
                 <div>
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#activities">Our Activities</a></li>
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="activities.html">Our Activities</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Activities</h4>
                     <ul>
-                        <li><a href="#guinea">Guinea Mission</a></li>
-                        <li><a href="#crusades">Crusades</a></li>
-                        <li><a href="#baptism">Baptism</a></li>
-                        <li><a href="#supporters">Our Supporters</a></li>
-                        <li><a href="#churchbuilding">Church Building</a></li>
+                        <li><a href="crusade.html">Crusade</a></li>
+                        <li><a href="missions.html">Missions</a></li>
+                        <li><a href="church-planting.html">Church Planting</a></li>
+                        <li><a href="children-ministry.html">Children Ministry</a></li>
                     </ul>
                 </div>
                 <div>

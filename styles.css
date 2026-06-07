@@ -140,7 +140,7 @@ header {
     transform: scale(1.05);
 }
 
-nav ul {
+nav > ul {
     display: flex;
     align-items: center;
     list-style: none;
@@ -148,11 +148,11 @@ nav ul {
     padding: 0;
 }
 
-nav ul li {
+nav > ul > li {
     margin-left: 25px;
 }
 
-nav ul li a {
+nav > ul > li > a {
     text-decoration: none;
     color: var(--dark);
     font-weight: 500;
@@ -160,7 +160,7 @@ nav ul li a {
     position: relative;
 }
 
-nav ul li a::after {
+nav > ul > li > a::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -171,12 +171,112 @@ nav ul li a::after {
     transition: width 0.3s ease;
 }
 
-nav ul li a:hover {
+nav > ul > li > a:hover {
     color: var(--primary);
 }
 
-nav ul li a:hover::after {
+nav > ul > li > a:hover::after {
     width: 100%;
+}
+
+.submenu-btn {
+    display: none;
+}
+
+.has-submenu {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.submenu-btn {
+    background: transparent;
+    border: 0;
+    color: var(--dark);
+    cursor: pointer;
+    padding: 6px;
+    margin-left: 6px;
+    align-items: center;
+    justify-content: center;
+}
+
+.submenu {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    display: none;
+    z-index: 1100;
+}
+
+.submenu li {
+    margin: 0;
+}
+
+.submenu a {
+    display: block;
+    padding: 10px 16px;
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.submenu a:hover {
+    color: var(--primary);
+    background: var(--light);
+}
+
+.has-submenu:hover > .submenu,
+.has-submenu.submenu-open > .submenu {
+    display: block;
+}
+
+.page-hero {
+    padding: 130px 0 60px;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('/images/hero.jpg') no-repeat center center;
+    background-size: cover;
+    color: var(--white);
+}
+
+.page-hero h1 {
+    color: var(--white);
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+.page-hero p {
+    color: rgba(255, 255, 255, 0.92);
+    max-width: 800px;
+}
+
+@media (max-width: 768px) {
+  .has-submenu {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .submenu {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .has-submenu.submenu-open > .submenu {
+    display: block;
+  }
+
+  .submenu a {
+    padding: 10px 0 10px 14px;
+  }
 }
 
 /* Mobile Menu Button - UPDATED POSITIONING */
@@ -195,7 +295,7 @@ nav ul li a:hover::after {
 }
 /* ===== MOBILE MENU STYLES ===== */
 @media (max-width: 768px) {
-  nav ul {
+  nav > ul {
     position: absolute;
     top: 100%;
     left: 0;
@@ -204,26 +304,30 @@ nav ul li a:hover::after {
     flex-direction: column;
     align-items: flex-start;
     padding: 15px 20px;
-    display: none; /* hidden by default */
+    display: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
-  nav ul.active {
-    display: flex; /* show when active */
+  nav > ul.active {
+    display: flex;
   }
 
-  nav ul li {
+  nav > ul > li {
     width: 100%;
     margin: 10px 0;
   }
 
-  nav ul li a {
+  nav > ul > li > a {
     width: 100%;
     padding: 10px 0;
   }
 
+  .submenu-btn {
+    display: inline-flex;
+  }
+
   .mobile-menu-btn {
-    display: block; /* show hamburger icon on small screens */
+    display: block;
   }
 }
 
@@ -960,7 +1064,7 @@ nav ul li a:hover::after {
         transform: translateY(-50%);
     }
 
-    nav ul {
+    nav > ul {
         position: fixed;
         top: 70px;
         left: -100%;
@@ -976,11 +1080,11 @@ nav ul li a:hover::after {
         z-index: 999;
     }
 
-    nav ul.active {
+    nav > ul.active {
         left: 0;
     }
 
-    nav ul li {
+    nav > ul > li {
         margin: 15px 0;
     }
 
