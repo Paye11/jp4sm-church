@@ -248,5 +248,6 @@ export const mainNav = [
   { title: 'Home', href: '/' },
   { title: 'About', href: '/about' },
   { title: 'Team', href: '/team' },
+  { title: 'Board of Directors', href: '/board-of-directors' },
   { title: 'Activities', href: '/activities' },
 ]
