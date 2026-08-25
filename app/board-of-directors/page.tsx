@@ -4,13 +4,19 @@ import Image from 'next/image'
 import { PageHero } from '@/components/page-hero'
 import { Reveal } from '@/components/reveal'
 import { CtaBand } from '@/components/cta-band'
-import { Volume2, VolumeX, Play, Pause, Video as VideoIcon } from 'lucide-react'
+import { Volume2, VolumeX, Play, Pause, Video as VideoIcon, Sparkles, Heart, Users, BookOpen, Church, Handshake, Star } from 'lucide-react'
 import { useRef, useState, useEffect } from 'react'
 import faithImage from '../../board/Director Faith Teewon Gleekia.jpeg'
 import jeremiahImage from '../../board/Director Jeremiah T. Burgess.jpeg'
 import pescoeImage from '../../board/Director Pescoe G. Menscoe.jpeg'
 import charlesImage from '../../board/Rev. Charles J. R. Wion.jpeg'
 import sylvesterImage from '../../board/Rev. Sylvester Gleekia.jpg'
+import leader1 from '../../board/board leader 1.jpeg'
+import leader2 from '../../board/board leader 2.jpeg'
+import leader3 from '../../board/board leader 3.jpeg'
+import leader4 from '../../board/board leader 4.jpeg'
+import leader5 from '../../board/board leader 5.jpeg'
+import leader6 from '../../board/board leader 6.jpeg'
 
 const directors = [
   {
@@ -273,10 +279,131 @@ export default function BoardOfDirectorsPage() {
         </div>
       </section>
 
+      <BoardLeadersInAction />
+
       <BoardVideoSection />
 
       <CtaBand />
     </>
+  )
+}
+
+function BoardLeadersInAction() {
+  const moments = [
+    {
+      image: leader1,
+      icon: Users,
+      title: 'Strategic Planning Session',
+      activity: 'Board leadership gathering to chart the future direction of JP4SM initiatives, evangelism campaigns, and community outreach programs across Liberia.',
+      accent: 'from-gold/40 to-gold/0',
+    },
+    {
+      image: leader2,
+      icon: Heart,
+      title: 'Community Compassion Outreach',
+      activity: 'Serving alongside local communities — meeting practical needs, sharing the love of Christ, and demonstrating the Gospel through acts of kindness and care.',
+      accent: 'from-rose-400/40 to-rose-400/0',
+    },
+    {
+      image: leader3,
+      icon: Church,
+      title: 'Church Planting & Dedication',
+      activity: 'Celebrating the birth of a new local congregation — a milestone in the board\'s vision to establish vibrant, Christ-centered churches in every district of Liberia.',
+      accent: 'from-emerald-400/40 to-emerald-400/0',
+    },
+    {
+      image: leader4,
+      icon: BookOpen,
+      title: 'Discipleship & Leadership Training',
+      activity: 'Equipping the next generation of believers and church workers through intensive biblical training, mentorship, and hands-on ministry preparation programs.',
+      accent: 'from-sky-400/40 to-sky-400/0',
+    },
+    {
+      image: leader5,
+      icon: Handshake,
+      title: 'Donor & Partner Fellowship',
+      activity: 'Strengthening bonds with faithful partners and donors — sharing testimonies of impact and expressing heartfelt gratitude for those who make the mission possible.',
+      accent: 'from-amber-400/40 to-amber-400/0',
+    },
+    {
+      image: leader6,
+      icon: Star,
+      title: 'Corporate Worship & Prayer',
+      activity: 'Coming together in unified worship and intercession — seeking the Lord\'s direction, blessing, and anointing over every area of the movement.',
+      accent: 'from-violet-400/40 to-violet-400/0',
+    },
+  ]
+
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-background via-secondary/40 to-background py-24">
+      <div className="absolute inset-0 opacity-[0.35] [background-image:radial-gradient(circle_at_1px_1px,hsl(var(--primary)/0.12)_1px,transparent_0)] [background-size:28px_28px]" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <Reveal>
+            <span className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-gold ring-1 ring-inset ring-gold/20">
+              <Sparkles className="h-3.5 w-3.5" />
+              Leadership in Action
+            </span>
+          </Reveal>
+          <Reveal delay={1}>
+            <h2 className="mt-6 font-heading text-3xl font-bold tracking-tight text-foreground text-balance sm:text-4xl lg:text-5xl">
+              Moments of Faithful Service
+            </h2>
+          </Reveal>
+          <Reveal delay={2}>
+            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+              A glimpse into the heart of our board — serving, leading, praying, and building the Kingdom of God together across the nation of Liberia.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {moments.map((moment, i) => {
+            const Icon = moment.icon
+            return (
+              <Reveal key={moment.title} delay={(i % 3) as 0 | 1 | 2} as="article">
+                <div className="group relative h-full overflow-hidden rounded-3xl border border-border/80 bg-card shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/30 hover:shadow-2xl hover:shadow-gold/10">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={moment.image}
+                      alt={moment.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className={`pointer-events-none absolute inset-0 bg-gradient-to-t ${moment.accent} opacity-70 transition-opacity duration-500 group-hover:opacity-100`} />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+                    <div className="absolute left-5 top-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-primary shadow-lg ring-1 ring-black/5 backdrop-blur transition-transform duration-500 group-hover:scale-110 group-hover:text-gold">
+                      <Icon className="h-5 w-5" strokeWidth={2.2} />
+                    </div>
+                  </div>
+
+                  <div className="p-6 sm:p-7">
+                    <h3 className="font-heading text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
+                      {moment.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
+                      {moment.activity}
+                    </p>
+                    <div className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gold/90 transition-transform duration-300 group-hover:translate-x-1">
+                      <span>Read the heart of it</span>
+                      <Heart className="h-3.5 w-3.5" fill="currentColor" />
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            )
+          })}
+        </div>
+
+        <Reveal delay={2}>
+          <div className="mx-auto mt-16 max-w-3xl text-center">
+            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+              Every photograph tells a story of sacrifice, teamwork, and unwavering commitment to the Great Commission. The board of JP4SM doesn&rsquo;t just <span className="font-semibold text-foreground">lead from the front</span> — they <span className="font-semibold text-foreground">serve from the heart</span>.
+            </p>
+          </div>
+        </Reveal>
+      </div>
+    </section>
   )
 }
 
