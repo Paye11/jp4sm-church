@@ -1,19 +1,16 @@
+'use client'
+
 import Image from 'next/image'
-import type { Metadata } from 'next'
 import { PageHero } from '@/components/page-hero'
 import { Reveal } from '@/components/reveal'
 import { CtaBand } from '@/components/cta-band'
+import { Volume2, VolumeX, Play, Pause, Video as VideoIcon } from 'lucide-react'
+import { useRef, useState } from 'react'
 import faithImage from '../../board/Director Faith Teewon Gleekia.jpeg'
 import jeremiahImage from '../../board/Director Jeremiah T. Burgess.jpeg'
 import pescoeImage from '../../board/Director Pescoe G. Menscoe.jpeg'
 import charlesImage from '../../board/Rev. Charles J. R. Wion.jpeg'
 import sylvesterImage from '../../board/Rev. Sylvester Gleekia.jpg'
-
-export const metadata: Metadata = {
-  title: 'Board of Directors — JP4SM',
-  description:
-    'Meet the Board of Directors of Jesus\' Passion for Souls Movement (JP4SM).',
-}
 
 const directors = [
   {
@@ -276,7 +273,137 @@ export default function BoardOfDirectorsPage() {
         </div>
       </section>
 
+      <BoardVideoSection />
+
       <CtaBand />
     </>
+  )
+}
+
+function BoardVideoSection() {
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
+
+  const togglePlay = () => {
+    const video = videoRef.current
+    if (!video) return
+
+    if (video.paused) {
+      video.play()
+      setIsPlaying(true)
+    } else {
+      video.pause()
+      setIsPlaying(false)
+    }
+  }
+
+  const toggleSound = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    const video = videoRef.current
+    if (!video) return
+
+    const nextMuted = !video.muted
+    video.muted = nextMuted
+    setIsMuted(nextMuted)
+
+    if (!nextMuted && video.paused) {
+      video.play()
+      setIsPlaying(true)
+    }
+  }
+
+  return (
+    <section className="relative overflow-hidden bg-primary py-24">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-primary/70" />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <Reveal>
+            <span className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-gold">
+              <VideoIcon className="h-3.5 w-3.5" />
+              Board Video
+            </span>
+          </Reveal>
+          <Reveal delay={1}>
+            <h2 className="mt-6 font-heading text-3xl font-bold text-primary-foreground text-balance sm:text-4xl lg:text-5xl">
+              The Board in Action
+            </h2>
+          </Reveal>
+          <Reveal delay={2}>
+            <p className="mt-5 text-lg leading-relaxed text-primary-foreground/80">
+              Watch the leadership of Jesus Passion for Souls Movement at work —
+              stewarding the vision, guiding the mission, and serving the Gospel with wisdom and dedication.
+            </p>
+          </Reveal>
+        </div>
+
+        <Reveal delay={2}>
+          <div className="group relative mx-auto mt-12 max-w-4xl">
+            <div className="pointer-events-none absolute -inset-1 rounded-[2.25rem] bg-gradient-to-tr from-gold/60 via-gold/10 to-transparent opacity-70 blur-sm transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-gold/30 bg-black shadow-2xl">
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={togglePlay}
+                  aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                  className="relative block w-full cursor-pointer"
+                >
+                  <video
+                    ref={videoRef}
+                    className="aspect-video w-full object-cover"
+                    src="/vid/board-video.mp4"
+                    muted={isMuted}
+                    loop
+                    playsInline
+                    preload="metadata"
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                  />
+
+                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+
+                  {!isPlaying ? (
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <span className="flex h-20 w-20 items-center justify-center rounded-full bg-gold/95 text-gold-foreground shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                        <Play className="h-8 w-8 translate-x-0.5" fill="currentColor" />
+                      </span>
+                    </span>
+                  ) : (
+                    <span className="absolute bottom-4 left-4 flex h-12 w-12 items-center justify-center rounded-full bg-black/55 text-primary-foreground shadow-lg backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+                      <Pause className="h-5 w-5" />
+                    </span>
+                  )}
+
+                  {!isPlaying ? (
+                    <span className="pointer-events-none absolute bottom-5 left-20 inline-flex items-center gap-2 rounded-full bg-black/55 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground backdrop-blur-sm">
+                      <Play className="h-3.5 w-3.5 text-gold" fill="currentColor" />
+                      Tap to play
+                    </span>
+                  ) : isMuted ? (
+                    <span className="pointer-events-none absolute bottom-5 left-20 inline-flex items-center gap-2 rounded-full bg-black/55 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground backdrop-blur-sm">
+                      <Volume2 className="h-3.5 w-3.5 text-gold" />
+                      Tap for sound
+                    </span>
+                  ) : null}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={toggleSound}
+                  aria-label={isMuted ? 'Turn sound on' : 'Turn sound off'}
+                  className="absolute bottom-4 right-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-gold text-gold-foreground shadow-lg transition-transform duration-300 hover:scale-110"
+                >
+                  {isMuted ? (
+                    <VolumeX className="h-5 w-5" />
+                  ) : (
+                    <Volume2 className="h-5 w-5" />
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
   )
 }
