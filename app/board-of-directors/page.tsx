@@ -5,7 +5,7 @@ import { PageHero } from '@/components/page-hero'
 import { Reveal } from '@/components/reveal'
 import { CtaBand } from '@/components/cta-band'
 import { Volume2, VolumeX, Play, Pause, Video as VideoIcon } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import faithImage from '../../board/Director Faith Teewon Gleekia.jpeg'
 import jeremiahImage from '../../board/Director Jeremiah T. Burgess.jpeg'
 import pescoeImage from '../../board/Director Pescoe G. Menscoe.jpeg'
@@ -282,8 +282,35 @@ export default function BoardOfDirectorsPage() {
 
 function BoardVideoSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null)
+  const sectionRef = useRef<HTMLElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
+  const [hasAutoPlayed, setHasAutoPlayed] = useState(false)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    const video = videoRef.current
+    if (!section || !video) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (video.paused) {
+              video.play().catch(() => {})
+              setHasAutoPlayed(true)
+            }
+          } else if (hasAutoPlayed && !video.paused) {
+            video.pause()
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [hasAutoPlayed])
 
   const togglePlay = () => {
     const video = videoRef.current
@@ -314,7 +341,7 @@ function BoardVideoSection() {
   }
 
   return (
-    <section className="relative overflow-hidden bg-primary py-24">
+    <section ref={sectionRef} className="relative overflow-hidden bg-primary py-24">
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-primary/70" />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
