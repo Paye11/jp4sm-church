@@ -298,20 +298,6 @@ function BoardLeadersInAction() {
       accent: 'from-gold/40 to-gold/0',
     },
     {
-      image: leader2,
-      icon: Heart,
-      title: 'Community Compassion Outreach',
-      activity: 'Serving alongside local communities — meeting practical needs, sharing the love of Christ, and demonstrating the Gospel through acts of kindness and care.',
-      accent: 'from-rose-400/40 to-rose-400/0',
-    },
-    {
-      image: leader3,
-      icon: Church,
-      title: 'Church Planting & Dedication',
-      activity: 'Celebrating the birth of a new local congregation — a milestone in the board\'s vision to establish vibrant, Christ-centered churches in every district of Liberia.',
-      accent: 'from-emerald-400/40 to-emerald-400/0',
-    },
-    {
       image: leader4,
       icon: BookOpen,
       title: 'Discipleship & Leadership Training',
@@ -320,13 +306,6 @@ function BoardLeadersInAction() {
     },
     {
       image: leader5,
-      icon: Handshake,
-      title: 'Donor & Partner Fellowship',
-      activity: 'Strengthening bonds with faithful partners and donors — sharing testimonies of impact and expressing heartfelt gratitude for those who make the mission possible.',
-      accent: 'from-amber-400/40 to-amber-400/0',
-    },
-    {
-      image: leader6,
       icon: Star,
       title: 'Corporate Worship & Prayer',
       activity: 'Coming together in unified worship and intercession — seeking the Lord\'s direction, blessing, and anointing over every area of the movement.',
