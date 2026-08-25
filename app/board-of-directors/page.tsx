@@ -373,14 +373,6 @@ function BoardLeadersInAction() {
             )
           })}
         </div>
-
-        <Reveal delay={2}>
-          <div className="mx-auto mt-16 max-w-3xl text-center">
-            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Every photograph tells a story of sacrifice, teamwork, and unwavering commitment to the Great Commission. The board of JP4SM doesn&rsquo;t just <span className="font-semibold text-foreground">lead from the front</span> — they <span className="font-semibold text-foreground">serve from the heart</span>.
-            </p>
-          </div>
-        </Reveal>
       </div>
     </section>
   )
