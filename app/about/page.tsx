@@ -1,11 +1,14 @@
 import Image from 'next/image'
 import type { Metadata } from 'next'
-import { Target, Eye, Compass, CheckCircle2 } from 'lucide-react'
+import { Target, Eye, Compass, CheckCircle2, Download, BookOpen } from 'lucide-react'
 import discipleshipHeroImage from '../../images/discipleship1.jpg'
 import evangelismImage from '../../images2/Evangelism.jpeg'
 import { PageHero } from '@/components/page-hero'
 import { Reveal } from '@/components/reveal'
 import { CtaBand } from '@/components/cta-band'
+import { Button } from '@/components/ui/button'
+
+const statementOfFaithDownload = '/documents/the-basic-statement-of-faith.docx'
 
 const missionStatement =
   'Jesus Passion for Souls Movement (JP4SM) is an interdenominational Evangelistic movement that seeks to fulfil the Great commission through Spirit-led Evangelism, strategic church planting, intentional discipleship, and meeting needs to reach the world.'
@@ -119,8 +122,51 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Objectives */}
+      {/* Statement of Faith */}
       <section className="bg-background py-24">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="rounded-3xl border border-border bg-card p-8 shadow-sm sm:p-10">
+              <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-start gap-5">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <BookOpen className="h-7 w-7" />
+                  </span>
+                  <div>
+                    <p className="font-heading text-sm font-semibold uppercase tracking-wider text-gold">
+                      Our Beliefs
+                    </p>
+                    <h2 className="mt-2 font-heading text-2xl font-bold text-foreground text-balance sm:text-3xl">
+                      The Basic Statement of Faith
+                    </h2>
+                    <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
+                      Download our statement of faith to learn the biblical
+                      convictions that guide JP4SM&apos;s mission, ministry, and
+                      outreach across Liberia and beyond.
+                    </p>
+                  </div>
+                </div>
+                <Button
+                  asChild
+                  size="lg"
+                  className="shrink-0 rounded-full bg-gold text-gold-foreground hover:bg-gold/90"
+                >
+                  <a
+                    href={statementOfFaithDownload}
+                    download="The Basic Statement of Faith.docx"
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Statement of Faith
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Objectives */}
+      <section className="bg-secondary/40 py-24">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <Reveal>
@@ -148,7 +194,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-background py-24">
+      <section className="bg-secondary/40 py-24">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <Reveal>
