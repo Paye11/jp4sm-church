@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { ArrowRight, ArrowLeft, CheckCircle2, Quote } from 'lucide-react'
+import { ArrowRight, ArrowLeft, CheckCircle2, Quote, Download, BookOpen } from 'lucide-react'
 import ctyHeroImage from '../../../images/CTY/CTY1.jpeg'
 import ctyImage2 from '../../../images/CTY/cty2.jpeg'
 import ctyImage3 from '../../../images/CTY/cty3.jpeg'
@@ -25,6 +25,8 @@ import { Reveal } from '@/components/reveal'
 import { CtaBand } from '@/components/cta-band'
 import { Button } from '@/components/ui/button'
 import { activities, getActivity } from '@/lib/nav'
+
+const statementOfFaithDownload = '/documents/the-basic-statement-of-faith.docx'
 
 const ctyGallery = [
   ctyHeroImage,
@@ -79,6 +81,7 @@ export default async function ActivityDetailPage({
   const isCatchThemYoung = slug === 'catch-them-young'
   const isCrusade = slug === 'crusade'
   const isVbs = slug === 'vocational-bible-studies'
+  const isMission = slug === 'mission'
 
   return (
     <>
@@ -138,6 +141,50 @@ export default async function ActivityDetailPage({
             </Reveal>
             <Reveal delay={1}>
               <ActivityImageSlideshow slides={crusadeSlides} />
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
+
+      {isMission ? (
+        <section className="bg-secondary/40 py-24">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <Reveal>
+              <div className="rounded-3xl border border-border bg-card p-8 shadow-sm sm:p-10">
+                <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-start gap-5">
+                    <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                      <BookOpen className="h-7 w-7" />
+                    </span>
+                    <div>
+                      <p className="font-heading text-sm font-semibold uppercase tracking-wider text-gold">
+                        Our Beliefs
+                      </p>
+                      <h2 className="mt-2 font-heading text-2xl font-bold text-foreground text-balance sm:text-3xl">
+                        The Basic Statement of Faith
+                      </h2>
+                      <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
+                        Download our statement of faith to learn the biblical
+                        convictions that guide JP4SM&apos;s mission work in
+                        remote, rural, and unreached areas.
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    asChild
+                    size="lg"
+                    className="shrink-0 rounded-full bg-gold text-gold-foreground hover:bg-gold/90"
+                  >
+                    <a
+                      href={statementOfFaithDownload}
+                      download="The Basic Statement of Faith.docx"
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      Download Statement of Faith
+                    </a>
+                  </Button>
+                </div>
+              </div>
             </Reveal>
           </div>
         </section>
