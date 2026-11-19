@@ -18,9 +18,11 @@ const heroSlides = [
 ]
 
 export function HeroBackgroundSlideshow() {
+  const [mounted, setMounted] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
+    setMounted(true)
     const intervalId = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % heroSlides.length)
     }, 4000)
@@ -31,7 +33,7 @@ export function HeroBackgroundSlideshow() {
   return (
     <div className="absolute inset-0">
       {heroSlides.map((slide, index) => {
-        const isActive = index === activeIndex
+        const isActive = mounted && index === activeIndex
 
         return (
           <div
@@ -39,6 +41,7 @@ export function HeroBackgroundSlideshow() {
             className={`absolute inset-0 transition-all duration-[1600ms] ease-in-out ${
               isActive ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
             }`}
+            suppressHydrationWarning
           >
             <Image
               src={slide.src}

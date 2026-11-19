@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 
 import founderImage from '../images/founder1.jpg'
@@ -27,8 +27,13 @@ const storyParagraphs = [
 ]
 
 export function FounderStorySection() {
+  const [mounted, setMounted] = useState(false)
   const [isPinnedOpen, setIsPinnedOpen] = useState(false)
   const [isHoverPreviewOpen, setIsHoverPreviewOpen] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const expanded = isPinnedOpen || isHoverPreviewOpen
 
@@ -50,7 +55,7 @@ export function FounderStorySection() {
             }}
           >
             <p className="font-heading text-sm font-semibold uppercase tracking-wider text-gold">
-              Foundnig Story
+              Founder Story
             </p>
             <h2 className="mt-3 font-heading text-3xl font-bold text-foreground text-balance sm:text-4xl">
               A divine encounter that launched a lifelong Gospel mission
@@ -63,7 +68,7 @@ export function FounderStorySection() {
             <Button
               type="button"
               variant="outline"
-              aria-expanded={expanded}
+              aria-expanded={mounted && expanded}
               className="mt-8 rounded-full border-gold/40 bg-background text-primary hover:bg-gold/10"
               onMouseEnter={() => {
                 if (!isPinnedOpen) setIsHoverPreviewOpen(true)
@@ -80,7 +85,7 @@ export function FounderStorySection() {
                 setIsPinnedOpen(true)
               }}
             >
-              {isPinnedOpen ? 'Read Less' : 'Read More'}
+              {mounted && (isPinnedOpen ? 'Read Less' : 'Read More')}
             </Button>
           </div>
         </Reveal>

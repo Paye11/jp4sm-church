@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Volume2, VolumeX, Sparkles } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 
@@ -8,7 +8,12 @@ const MINISTRY_VIDEO_SRC = '/vid/ministry-overview.mp4'
 
 export function MinistryVideoSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null)
+  const [mounted, setMounted] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const toggleSound = () => {
     const video = videoRef.current
@@ -55,7 +60,7 @@ export function MinistryVideoSection() {
               <button
                 type="button"
                 onClick={toggleSound}
-                aria-label={isMuted ? 'Turn sound on' : 'Turn sound off'}
+                aria-label={mounted && !isMuted ? 'Turn sound off' : 'Turn sound on'}
                 className="relative block w-full cursor-pointer"
               >
                 <video
@@ -67,24 +72,31 @@ export function MinistryVideoSection() {
                   loop
                   playsInline
                   preload="metadata"
+                  suppressHydrationWarning
                 />
 
                 <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
-                <span className="absolute bottom-4 right-4 flex h-12 w-12 items-center justify-center rounded-full bg-gold text-gold-foreground shadow-lg transition-transform duration-300 group-hover:scale-110">
-                  {isMuted ? (
-                    <VolumeX className="h-5 w-5" />
-                  ) : (
+                <span
+                  className="absolute bottom-4 right-4 flex h-12 w-12 items-center justify-center rounded-full bg-gold text-gold-foreground shadow-lg transition-transform duration-300 group-hover:scale-110"
+                  suppressHydrationWarning
+                >
+                  {mounted && !isMuted ? (
                     <Volume2 className="h-5 w-5" />
+                  ) : (
+                    <VolumeX className="h-5 w-5" />
                   )}
                 </span>
 
-                {isMuted ? (
-                  <span className="absolute bottom-5 left-4 inline-flex items-center gap-2 rounded-full bg-black/55 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground backdrop-blur-sm">
+                {mounted && !isMuted ? null : (
+                  <span
+                    className="absolute bottom-5 left-4 inline-flex items-center gap-2 rounded-full bg-black/55 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground backdrop-blur-sm"
+                    suppressHydrationWarning
+                  >
                     <Volume2 className="h-3.5 w-3.5 text-gold" />
                     Tap for sound
                   </span>
-                ) : null}
+                )}
               </button>
             </div>
           </div>

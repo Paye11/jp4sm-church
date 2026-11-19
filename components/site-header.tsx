@@ -11,11 +11,13 @@ import { Button } from '@/components/ui/button'
 
 export function SiteHeader() {
   const pathname = usePathname()
+  const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activitiesOpen, setActivitiesOpen] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const onScroll = () => setScrolled(window.scrollY > 20)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -33,10 +35,11 @@ export function SiteHeader() {
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-300',
-        scrolled
+        mounted && scrolled
           ? 'bg-background/90 shadow-sm backdrop-blur-md'
           : 'bg-transparent',
       )}
+      suppressHydrationWarning
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
@@ -54,16 +57,18 @@ export function SiteHeader() {
             <span
               className={cn(
                 'font-heading text-lg font-bold tracking-tight transition-colors',
-                scrolled ? 'text-primary' : 'text-white',
+                mounted && scrolled ? 'text-primary' : 'text-white',
               )}
+              suppressHydrationWarning
             >
               JP4SM
             </span>
             <span
               className={cn(
                 'text-[11px] font-medium uppercase tracking-wider transition-colors',
-                scrolled ? 'text-muted-foreground' : 'text-gold',
+                mounted && scrolled ? 'text-muted-foreground' : 'text-gold',
               )}
+              suppressHydrationWarning
             >
               Passion for Souls
             </span>
@@ -85,12 +90,13 @@ export function SiteHeader() {
                     href={item.href}
                     className={cn(
                       'flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors',
-                      scrolled
+                      mounted && scrolled
                         ? isActive(item.href)
                           ? 'text-primary'
                           : 'text-foreground/80 hover:text-primary'
                         : 'text-gold hover:text-gold/80',
                     )}
+                    suppressHydrationWarning
                   >
                     {item.title}
                     <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
@@ -98,10 +104,11 @@ export function SiteHeader() {
                   <div
                     className={cn(
                       'absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3 transition-all duration-200',
-                      activitiesOpen
+                      mounted && activitiesOpen
                         ? 'visible opacity-100'
                         : 'invisible opacity-0',
                     )}
+                    suppressHydrationWarning
                   >
                     <div className="grid gap-1 rounded-2xl border border-border bg-card p-2 shadow-xl">
                       {activities.map((a) => (
@@ -124,12 +131,13 @@ export function SiteHeader() {
                 href={item.href}
                 className={cn(
                   'rounded-full px-4 py-2 text-sm font-medium transition-colors',
-                  scrolled
+                  mounted && scrolled
                     ? isActive(item.href)
                       ? 'text-primary'
                       : 'text-foreground/80 hover:text-primary'
                     : 'text-gold hover:text-gold/80',
                 )}
+                suppressHydrationWarning
               >
                 {item.title}
               </Link>
@@ -151,9 +159,10 @@ export function SiteHeader() {
           className="inline-flex items-center justify-center rounded-full p-2 text-foreground lg:hidden"
           onClick={() => setMobileOpen((o) => !o)}
           aria-label="Toggle menu"
-          aria-expanded={mobileOpen}
+          aria-expanded={mounted && mobileOpen}
+          suppressHydrationWarning
         >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mounted && mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
@@ -161,8 +170,9 @@ export function SiteHeader() {
       <div
         className={cn(
           'overflow-hidden border-t border-border bg-background/95 backdrop-blur-md transition-[max-height] duration-300 lg:hidden',
-          mobileOpen ? 'max-h-[80vh] overflow-y-auto' : 'max-h-0',
+          mounted && mobileOpen ? 'max-h-[80vh] overflow-y-auto' : 'max-h-0',
         )}
+        suppressHydrationWarning
       >
         <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6">
           {mainNav.map((item) => (

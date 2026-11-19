@@ -16,9 +16,11 @@ type ActivityImageSlideshowProps = {
 export function ActivityImageSlideshow({
   slides,
 }: ActivityImageSlideshowProps) {
+  const [mounted, setMounted] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
+    setMounted(true)
     const intervalId = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % slides.length)
     }, 4000)
@@ -30,7 +32,7 @@ export function ActivityImageSlideshow({
     <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-primary/5 shadow-2xl">
       <div className="relative aspect-[5/4] min-h-[320px]">
         {slides.map((slide, index) => {
-          const isActive = index === activeIndex
+          const isActive = mounted && index === activeIndex
 
           return (
             <div
@@ -38,6 +40,7 @@ export function ActivityImageSlideshow({
               className={`absolute inset-0 transition-all duration-[1600ms] ease-in-out ${
                 isActive ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
               }`}
+              suppressHydrationWarning
             >
               <Image
                 src={slide.src}
@@ -70,10 +73,11 @@ export function ActivityImageSlideshow({
               aria-label={`View crusade slide ${index + 1}`}
               onClick={() => setActiveIndex(index)}
               className={`h-2.5 rounded-full transition-all ${
-                index === activeIndex
+                mounted && index === activeIndex
                   ? 'w-8 bg-gold'
                   : 'w-2.5 bg-primary-foreground/45 hover:bg-primary-foreground/70'
               }`}
+              suppressHydrationWarning
             />
           ))}
         </div>

@@ -18,8 +18,10 @@ export function Reveal({
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null)
   const [visible, setVisible] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const el = ref.current
     if (!el) return
     const observer = new IntersectionObserver(
@@ -45,9 +47,10 @@ export function Reveal({
         delay === 1 && 'reveal-delay-1',
         delay === 2 && 'reveal-delay-2',
         delay === 3 && 'reveal-delay-3',
-        visible && 'is-visible',
+        mounted && visible && 'is-visible',
         className,
       )}
+      suppressHydrationWarning
     >
       {children}
     </Tag>

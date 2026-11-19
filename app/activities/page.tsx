@@ -10,7 +10,7 @@ import { activities } from '@/lib/nav'
 export const metadata: Metadata = {
   title: 'Activities — JP4SM',
   description:
-    'Explore the ministries and activities of Jesus\' Passion for Souls Movement: Evangelism, Discipleship, Church Planting, Vacation Bible School (VBS), Catch Them Young, Crusade, Mission, and Children Ministry.',
+    'Explore the ministries and activities of Jesus\' Passion for Souls Movement: Evangelism, Discipleship, Bible Translation Program, Church Planting, Vacation Bible School (VBS), Catch Them Young, Crusade, Mission, and Children Ministry.',
 }
 
 export default function ActivitiesPage() {

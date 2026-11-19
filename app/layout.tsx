@@ -41,8 +41,9 @@ export default function RootLayout({
       lang="en"
       data-scroll-behavior="smooth"
       className={`${playfair.variable} ${inter.variable} bg-background`}
+      suppressHydrationWarning
     >
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased" suppressHydrationWarning>
         <ScrollProgress />
         <SiteHeader />
         <main className="min-h-screen">{children}</main>

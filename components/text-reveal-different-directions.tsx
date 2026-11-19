@@ -1,3 +1,5 @@
+'use client'
+
 import type { CSSProperties } from 'react'
 
 type TextRevealDifferentDirectionsProps = {
@@ -22,6 +24,7 @@ export function TextRevealDifferentDirections({
               '--word-delay': `${0.12 + index * 0.16}s`,
             } as CSSProperties
           }
+          suppressHydrationWarning
         >
           {word}
         </span>

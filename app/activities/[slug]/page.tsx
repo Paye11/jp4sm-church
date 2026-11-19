@@ -19,6 +19,17 @@ import crusadeSlide3 from '../../../images/slides/slide3.jpeg'
 import crusadeSlide4 from '../../../images/slides/slide4.jpeg'
 import crusadeSlide5 from '../../../images/slides/slide5.jpeg'
 import crusadeSlide6 from '../../../images/slides/slide6.jpeg'
+import translationHeroImage from '../../../images/B translation/transaction activities.jpeg'
+import translationImage1 from '../../../images/B translation/0064d69a-3a7a-4928-b9f6-02e10fe17257.jpeg'
+import translationImage2 from '../../../images/B translation/258b5bb4-72e0-4311-aa7b-3ce76fa13e57.jpeg'
+import translationImage3 from '../../../images/B translation/455e5ce1-1b29-4e6e-83ca-4b8773f0c74f.jpeg'
+import translationImage4 from '../../../images/B translation/73cce9f5-1e80-46ca-a215-6ceffdca8abd.jpeg'
+import translationImage5 from '../../../images/B translation/7529e887-4c32-4ea9-ae37-bdb03f416e35.jpeg'
+import translationImage6 from '../../../images/B translation/d27677e6-a81b-4b3e-8eb0-59ef56daf91c.jpeg'
+import translationImage7 from '../../../images/B translation/d4b1d011-a726-419b-a485-675cf99b1fb1.jpeg'
+import translationImage8 from '../../../images/B translation/e1657da1-1fa4-4324-8533-7c5e4057031a.jpeg'
+import translationImage9 from '../../../images/B translation/efe8bb8e-916b-414a-bc46-0c4f276f7ee8.jpeg'
+import translationImage10 from '../../../images/B translation/f45bd437-203b-4ebe-afb2-419d4de1e270.jpeg'
 import { ActivityImageSlideshow } from '@/components/activity-image-slideshow'
 import { PageHero } from '@/components/page-hero'
 import { Reveal } from '@/components/reveal'
@@ -48,6 +59,53 @@ const crusadeSlides = [
   { src: crusadeSlide4, alt: 'Prayer and response during a crusade meeting' },
   { src: crusadeSlide5, alt: 'Crusade crowd taking part in worship together' },
   { src: crusadeSlide6, alt: 'Another powerful moment from a JP4SM crusade gathering' },
+]
+
+const bibleTranslationGallery = [
+  {
+    src: translationHeroImage,
+    caption: 'The Bible Translation Program at work among the communities we serve.',
+  },
+  {
+    src: translationImage1,
+    caption: 'Translators working carefully through the text, weighing every word.',
+  },
+  {
+    src: translationImage2,
+    caption: 'A time of prayer and preparation before translation work begins.',
+  },
+  {
+    src: translationImage3,
+    caption: 'Reviewing a draft together so the meaning stays faithful and clear.',
+  },
+  {
+    src: translationImage4,
+    caption: 'Checking the translation with mother-tongue speakers from the community.',
+  },
+  {
+    src: translationImage5,
+    caption: 'Local church leaders helping to confirm the text reads naturally.',
+  },
+  {
+    src: translationImage6,
+    caption: 'Discussing how best to express key biblical terms in the local language.',
+  },
+  {
+    src: translationImage7,
+    caption: 'Listening back to the reading to test how the Word sounds in the ear.',
+  },
+  {
+    src: translationImage8,
+    caption: 'Cross-checking the draft against the source text for accuracy.',
+  },
+  {
+    src: translationImage9,
+    caption: 'People hearing Scripture in their own heart language for the first time.',
+  },
+  {
+    src: translationImage10,
+    caption: 'Giving thanks for another step forward in the translation project.',
+  },
 ]
 
 export function generateStaticParams() {
@@ -82,6 +140,7 @@ export default async function ActivityDetailPage({
   const isCrusade = slug === 'crusade'
   const isVbs = slug === 'vocational-bible-studies'
   const isMission = slug === 'mission'
+  const isBibleTranslation = slug === 'bible-translation-program'
 
   return (
     <>
@@ -241,6 +300,57 @@ export default async function ActivityDetailPage({
           </div>
         </div>
       </section>
+
+      {isBibleTranslation ? (
+        <section className="bg-background py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <Reveal>
+                <p className="font-heading text-sm font-semibold uppercase tracking-wider text-gold">
+                  Translation Gallery
+                </p>
+              </Reveal>
+              <Reveal delay={1}>
+                <h2 className="mt-3 font-heading text-3xl font-bold text-foreground text-balance sm:text-4xl">
+                  The Word of God taking root in every language
+                </h2>
+              </Reveal>
+              <Reveal delay={2}>
+                <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+                  These moments come from the ongoing work of the Bible
+                  Translation Program — translating, checking, and the joy of
+                  seeing Scripture read and understood in a heart language.
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {bibleTranslationGallery.map((item, index) => (
+                <Reveal
+                  key={`translation-gallery-${index}`}
+                  delay={(index % 3) as 0 | 1 | 2}
+                  as="article"
+                >
+                  <figure className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={item.src}
+                        alt={item.caption}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <figcaption className="flex-1 p-5 text-sm leading-relaxed text-muted-foreground">
+                      {item.caption}
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {isVbs ? (
         <section className="bg-background py-24">

@@ -2,6 +2,7 @@ import type { StaticImageData } from 'next/image'
 
 import evangelismImage from '../images2/Evangelism.jpeg'
 import discipleshipImage from '../images/discipleship1.jpg'
+import bibleTranslationImage from '../images/B translation/transaction activities.jpeg'
 import churchPlantingYekepaImage from '../images2/churchplanting_in_yekepa/Church planting in Yekepa5.jpg'
 import missionToYouthImage from '../images2/MissiontoYouth/MissiontoYouth2.jpg'
 import catchThemYoungImage from '../images/CTY/CTY1.jpeg'
@@ -73,6 +74,33 @@ export const activities: ActivityItem[] = [
       {
         title: 'Small Groups',
         text: 'Building authentic community where faith is lived out together.',
+      },
+    ],
+  },
+  {
+    title: 'Bible Translation Program',
+    slug: 'bible-translation-program',
+    short:
+      'Putting Scripture into the heart language of every community so all people can hear God speak in their own tongue.',
+    image: bibleTranslationImage,
+    tagline: 'Giving every community the Word of God in its own language',
+    intro:
+      'The Bible Translation Program exists so that no one is left without Scripture in the language they understand best. JP4SM works alongside mother-tongue speakers, translators, and local churches to translate, check, and share God\u2019s Word in the languages of the communities we serve. When people read Scripture in their heart language, the Gospel stops sounding foreign and becomes personal, clear, and alive.',
+    scripture:
+      'After this I beheld, and, lo, a great multitude, which no man could number, of all nations, and kindreds, and people, and tongues, stood before the throne, and before the Lamb.',
+    scriptureRef: 'Revelation 7:9',
+    highlights: [
+      {
+        title: 'Translating the Text',
+        text: 'Rendering Scripture faithfully into local languages, with careful attention to accuracy and meaning.',
+      },
+      {
+        title: 'Mother-Tongue Checking',
+        text: 'Reading drafts with native speakers to confirm the Word is clear, natural, and true.',
+      },
+      {
+        title: 'Scripture in Use',
+        text: 'Helping churches read, teach, and share the translated Word in worship and everyday life.',
       },
     ],
   },
